@@ -1,0 +1,1 @@
+Copy and paste files from here into your service folder to save time building commonly used screens and patterns.

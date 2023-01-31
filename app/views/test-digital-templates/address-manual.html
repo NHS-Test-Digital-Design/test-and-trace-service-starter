@@ -1,0 +1,55 @@
+{% set pageTitle = "What is your home address in the UK?" %}
+{% extends "layout_service_step.html" %}
+
+
+{% block content %}
+
+    {# https://design-system.service.gov.uk/styles/typography/#headings #}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+
+    <form action="gp-address" class="form" method="post">
+        {# https://design-system.service.gov.uk/components/text-input/ #}
+        {{ govukInput({
+            id: "addressLine1",
+            name: "addressLine1",
+            autocomplete: "address-line1",
+            label: {
+                text: "Buiding and street"
+            }
+        }) }}
+        {{ govukInput({
+            id: "addressLine2",
+            name: "addressLine2",
+            autocomplete: "address-line2",
+            label: {
+                text: "Building and street line 2 of 2",
+                classes: "govuk-visually-hidden"
+            }
+        }) }}
+        {{ govukInput({
+            id: "addressTown",
+            name: "addressTown",
+            classes: "govuk-input--width-10",
+            label: {
+                text: "Town or city"
+            }
+        }) }}
+        {{ govukInput({
+            id: "addressPostcode",
+            name: "addressPostcode",
+            classes: "govuk-input--width-10",
+            label: {
+                text: "Postcode"
+            }
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+
+{% endblock %}

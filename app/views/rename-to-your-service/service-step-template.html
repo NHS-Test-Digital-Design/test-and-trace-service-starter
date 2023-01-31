@@ -1,10 +1,14 @@
-{% set pageTitle = "The first step in your service" %}
 {% extends "layout_service_step.html" %}
+{% set pageTitle = "The first step in your service" %}
 
 {% block content %}
     <h1 class="govuk-heading-l">
-        Duplicate this file and add your question or page content.
+        {{ pageTitle }}
     </h1>
+
+    <p class="govuk-body">
+        Duplicate this file and add your question or page content.
+    </p>
 
     <p class="govuk-body">
         Read the docs on <a href="https://design-system.service.gov.uk/patterns/question-pages/" class="govuk-link" target="blank">question pages</a> for more info.

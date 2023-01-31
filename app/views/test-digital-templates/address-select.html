@@ -1,0 +1,85 @@
+{% set pageTitle = "What is your home address in the UK?" %}
+{% extends "layout_service_step.html" %}
+
+{% set code = data['homePostcode'] or 'NH48 1SD' %}
+
+{% block content %}
+
+    <h1 class="govuk-heading-l  govuk-!-margin-bottom-8">
+        {{ pageTitle }}
+    </h1>
+
+    {# https://design-system.service.gov.uk/components/summary-list/ #}
+    {{ govukSummaryList({
+        rows: [
+            {
+                key: {
+                    text: "Postcode"
+                },
+                value: {
+                    text:  code
+                },
+                actions: {
+                    items: [
+                        {
+                            href: "home-address-postcode",
+                            text: "Change",
+                            visuallyHiddenText: "Postcode"
+                        }
+                    ]
+                }
+            }
+        ]
+    }) }}
+
+    <form action="gp-address" class="form" method="post">
+        
+        {# https://design-system.service.gov.uk/components/select/ #}
+        {{ govukSelect({
+            id: "selectHomeAddress",
+            name: "selectHomeAddress",
+            label: {
+                text: "Select an address"
+            },
+            items: [
+                {
+                    value: "found",
+                    text: "5 addresses found",
+                    selected: true
+                },
+                {
+                    value: "1 New Street, Your City, " + code,
+                    text: "1 New Street, Your City, " + code
+                },
+                {
+                    value: "2 New Street, Your City, " + code,
+                    text: "2 New Street, Your City, " + code
+                },
+                {
+                    value: "3 New Street, Your City, " + code,
+                    text: "3 New Street, Your City, " + code
+                },
+                {
+                    value: "4 New Street, Your City, " + code,
+                    text: "4 New Street, Your City, " + code
+                },
+                {
+                    value: "5 New Street, Your City, " + code,
+                    text: "5 New Street, Your City, " + code
+                }
+            ]
+        }) }}
+
+        <p class="govuk-body">
+            <a href="home-address-manual" class="govuk-link">I cannot find the address on the list</a>
+        </p>
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+
+    </form>
+
+{% endblock %}

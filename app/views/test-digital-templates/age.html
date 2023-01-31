@@ -1,0 +1,28 @@
+{% set pageTitle = "What is your date of birth?" %}
+{% extends "layout_service_step.html" %}
+
+{% block content %}
+    <form action="#" class="form" method="post">
+        {# https://design-system.service.gov.uk/components/date-input/ #}
+        {{ govukDateInput({
+            id: "dob",
+            namePrefix: "dob",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                }
+            },
+            hint: {
+                text: "For example, 27 3 1972"
+            }
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

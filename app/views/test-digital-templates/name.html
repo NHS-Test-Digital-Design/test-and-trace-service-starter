@@ -1,0 +1,38 @@
+{% set pageTitle = "What is your name?" %}
+{% extends "layout_service_step.html" %}
+
+{% block content %}
+    <form action="name-answer" class="form" method="post">
+        {% call govukFieldset({
+            legend: {
+                text: pageTitle,
+                classes: "govuk-fieldset__legend--l",
+                isPageHeading: true
+            }
+        }) %}
+
+        {{ govukInput({
+            id: "first-name",
+            name: "first-name",
+            classes: "govuk-!-width-one-half",
+            label: {
+                text: "First name"
+            }
+        }) }}
+        {{ govukInput({
+            id: "last-name",
+            name: "last-name",
+            classes: "govuk-!-width-one-half",
+            label: {
+                text: "Last name"
+            }
+        }) }}
+        
+        {% endcall %}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}
