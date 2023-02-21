@@ -1,0 +1,51 @@
+{% set pageTitle = "Interview needs" %}
+{% extends "layout_service_step.html" %}
+
+{% block content %}
+    {# https://design-system.service.gov.uk/patterns/question-pages/ #}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+    <p class="govuk-body">
+        Providers do not usually have much flexibility when setting a date and time for interview unless you need adjustments due to a <a href="#" class="govuk-link">health condition or disability</a>.
+    </p>
+    <p class="govuk-body">
+        However, if you need flexibility for other reasons you can tell us about it here.
+    </p>
+    <p class="govuk-body">
+        For example, you have commitments like caring responsibilites or employment.
+    </p>
+    <p class="govuk-body">
+        Contact your provider if you’re concerned about the interview process.
+    </p>
+
+    <form action="#" method="post" novalidate>
+        {# https://design-system.service.gov.uk/components/radios/ #}
+        {{ govukRadios({
+            name: "interview-needs",
+            fieldset: {
+                legend: {
+                    text: "Do you have any interview needs?",
+                    isPageHeading: false,
+                    classes: "govuk-fieldset__legend--m"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+        
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

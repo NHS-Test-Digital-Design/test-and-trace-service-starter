@@ -1,0 +1,46 @@
+{% set pageTitle = "What is your email address?" %}
+{% extends "layout_service_step.html" %}
+{% set titles %}
+    <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+    </h1>
+    <p class="govuk-body">
+        Somthing about it being OK to use someone eles email address. 
+    </p>
+{% endset %}
+
+
+{% block content %}
+    <form action="email" class="form" method="post">
+        {% call govukFieldset({
+            legend: {
+                html: titles,
+                classes: "govuk-fieldset__legend--l"
+            }
+        }) %}
+
+            {{ govukInput({
+                id: "emailAddress",
+                name: "emailAddress",
+                classes: "govuk-!-width-one-half",
+                label: {
+                    text: "Email address"
+                }
+            }) }}
+            {{ govukInput({
+                id: "confirmEmailAddess",
+                name: "confirmEmailAddess",
+                classes: "govuk-!-width-one-half",
+                label: {
+                    text: "Confirm Email address"
+                }
+            }) }}
+        
+        {% endcall %}
+
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}

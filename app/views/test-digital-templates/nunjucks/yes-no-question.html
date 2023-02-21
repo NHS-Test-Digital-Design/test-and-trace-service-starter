@@ -1,0 +1,39 @@
+{% set pageTitle = "Your simple yes no question should go here. Is it a yes no question?" %}
+{% extends "layout_service_step.html" %}
+
+{% block content %}
+    {# https://design-system.service.gov.uk/patterns/question-pages/ #}
+    <form action="/return-to-work-answer" class="form" method="post">
+        {# https://design-system.service.gov.uk/components/radios/ #}
+        {{ govukRadios({
+            idPrefix: "return-to-work",
+            name: "return-to-work",
+            fieldset: {
+                legend: {
+                    text: pageTitle,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l  govuk-!-margin-bottom-6"
+                }
+            },
+            hint: {
+                text: "You can use hint text here is you need additional context. Keep it short though."
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        {# https://design-system.service.gov.uk/components/button/ #}
+        {{ govukButton({
+            text: "Continue",
+            classes: "govuk-!-margin-top-4"
+        }) }}
+    </form>
+{% endblock %}
